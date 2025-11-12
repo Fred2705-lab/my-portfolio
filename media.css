@@ -1,19 +1,27 @@
-
 @media (min-width: 1440px) {
-    .grid-container-main {
+    .content-section {
         max-width: 1600px;
     }
 
-    .profile-card {
+    #home .profile-card {
         left: 150px;
     }
 
     .profile-image-container {
-        width: 350px;
-        height: 350px;
+        width: 400px;
+        height: 400px;
+    }
+    
+    .portfolio-section .profile-card {
+        width: 400px; /* Larger card on big screens */
+    }
+    .portfolio-section .profile-image-container {
+        width: 300px;
+        height: 300px;
     }
 
-    .grid-container {
+
+    #home .grid-container {
         margin-left: 650px;
     }
 
@@ -24,11 +32,11 @@
 
 
 @media (min-width: 1301px) and (max-width: 1439px) {
-    .grid-container-main {
+    #home {
         padding: 0 80px;
     }
 
-    .profile-card {
+    #home .profile-card {
         left: 100px;
     }
 
@@ -36,8 +44,16 @@
         width: 320px;
         height: 320px;
     }
+    
+    .portfolio-section .profile-card {
+        width: 350px;
+    }
+    .portfolio-section .profile-image-container {
+        width: 250px;
+        height: 250px;
+    }
 
-    .grid-container {
+    #home .grid-container {
         margin-left: 550px;
     }
 
@@ -52,8 +68,16 @@
         width: 300px;
         height: 300px;
     }
+    
+    .portfolio-section .profile-card {
+        width: 300px;
+    }
+    .portfolio-section .profile-image-container {
+        width: 200px;
+        height: 200px;
+    }
 
-    .grid-container {
+    #home .grid-container {
         margin-left: 520px;
     }
 
@@ -68,8 +92,16 @@
         width: 280px;
         height: 280px;
     }
+    
+    .portfolio-section .profile-card {
+        width: 280px;
+    }
+    .portfolio-section .profile-image-container {
+        width: 180px;
+        height: 180px;
+    }
 
-    .grid-container {
+    #home .grid-container {
         margin-left: 500px;
     }
 
@@ -88,8 +120,16 @@
         width: 270px;
         height: 270px;
     }
+    
+    .portfolio-section .profile-card {
+        width: 250px;
+    }
+    .portfolio-section .profile-image-container {
+        width: 170px;
+        height: 170px;
+    }
 
-    .grid-container {
+    #home .grid-container {
         margin-left: 480px;
     }
 
@@ -99,8 +139,29 @@
 }
 
 
+/* STACK LAYOUT FOR TABLETS/SMALL DESKTOPS */
+@media (max-width: 1000px) {
+    .two-column-layout {
+        flex-direction: column; /* Stack vertically */
+        gap: 20px;
+    }
+    .portfolio-section .profile-card {
+        width: 100%;
+        padding-top: 0;
+        /* Center the profile card in the stacked layout */
+        align-items: center; 
+    }
+    
+    .portfolio-section .section-content {
+        padding-top: 0;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}
+
+
 @media (min-width: 901px) and (max-width: 1000px) {
-    .profile-card {
+    #home .profile-card {
         left: 70px;
     }
 
@@ -109,7 +170,7 @@
         height: 250px;
     }
 
-    .grid-container {
+    #home .grid-container {
         margin-left: 450px;
         font-size: 0.9em;
     }
@@ -120,8 +181,26 @@
 }
 
 
+
+/* --- FIX FOR NAVBAR LOGO AND LINKS: 886px up to 990px (Fixed Responsiveness) --- */
+@media (min-width: 886px) and (max-width: 990px) {
+    .navbar {
+        padding: 30px 20px; /* Reduce horizontal padding for more space */
+    }
+    .navbar .logo {
+        font-size: 1.6em; /* Reduced for better fit */
+    }
+    .nav-links ul li {
+        margin: 0 25px; /* Reduce spacing between navigation links */
+    }
+    .nav-links ul li a {
+        font-size: 0.95em; /* Slightly reduce link font size */
+    }
+}
+/* -------------------------------------------------------------------------- */
+
 @media (min-width: 801px) and (max-width: 900px) {
-    .profile-card {
+    #home .profile-card {
         left: 60px;
     }
 
@@ -130,7 +209,7 @@
         height: 230px;
     }
 
-    .grid-container {
+    #home .grid-container {
         margin-left: 420px;
         font-size: 0.85em;
     }
@@ -140,9 +219,20 @@
     }
 }
 
+/* --- FIX FOR H1 FONT SIZE: 801px up to 823px --- */
+@media (min-width: 801px) and (max-width: 823px) {
+    #home .grid-container {
+        margin-left: 380px; 
+    }
+    .grid-container h1 {
+        font-size: 2.9em; 
+    }
+}
+/* ----------------------------------------------- */
+
 
 @media (min-width: 769px) and (max-width: 800px) {
-    .profile-card {
+    #home .profile-card {
         left: 50px;
     }
 
@@ -151,7 +241,7 @@
         height: 220px;
     }
 
-    .grid-container {
+    #home .grid-container {
         margin-left: 400px;
         font-size: 0.8em;
     }
@@ -162,7 +252,52 @@
 }
 
 
+/* --- FIX FOR NAVBAR LOGO: 650px up to 768px --- */
+/* Ensures the logo is still responsive in the wider mobile/tablet range. */
+@media (min-width: 650px) and (max-width: 768px) {
+    .navbar .logo {
+        font-size: 1.5em; 
+    }
+}
+/* --------------------------------------------- */
+
+
+/* --- FIX FOR NAVBAR LOGO: 551px up to 649px (Tighter fit for the requested range) --- */
+/* Reduced to 1.25em to fit the logo and links in the narrow 551px-649px viewport. */
+@media (min-width: 551px) and (max-width: 649px) {
+    .navbar .logo {
+        font-size: 1.25em; 
+    }
+}
+/* --------------------------------------------- */
+
+/* --- FIX FOR NAVBAR: 669px up to 885px --- */
+@media (min-width: 669px) and (max-width: 885px) {
+    .navbar {
+        padding: 30px 20px; 
+    }
+
+    .navbar .logo {
+        /* Reduced from 1.6em to 1.4em to prevent wrapping */
+        font-size: 1.4em; 
+    }
+    
+    .nav-links ul li {
+        /* Reduced from 30px to 20px for a tighter fit */
+        margin: 0 20px; 
+    }
+
+    .nav-links ul li a {
+        font-size: 1.0em; 
+    }
+}
+/* ------------------------------------------- */
+
 @media (max-width: 768px) {
+    .profile-image-container {
+        width: 200px;
+        height: 200px;
+    }
     .navbar {
         
         padding: 15px 20px;
@@ -175,7 +310,7 @@
     .navbar ul li {
         margin: 0 15px;
     }
-    .grid-container-main {
+    #home { /* Targeting the home section container */
         flex-direction: column;
         justify-content: center;
         text-align: center;
@@ -184,13 +319,13 @@
         margin: 0;
         min-height: auto;
     }
-    .profile-card {
+    #home .profile-card {
         position: relative;
         left: auto;
         top: auto;
         margin-bottom: 40px;
     }
-    .grid-container {
+    #home .grid-container {
         margin-left: 0;
         text-align: center;
         max-width: 100%;
@@ -204,6 +339,22 @@
     }
     .grid-container .course {
         font-size: 1.1em;
+    }
+    
+    /* Adjustments for the new portfolio sections */
+    .portfolio-section {
+        padding: 50px 20px;
+        min-height: auto;
+    }
+
+    .portfolio-section h2 {
+        font-size: 2.2em;
+        margin-bottom: 30px;
+    }
+    
+    .project-item {
+        /* On smaller screens, allow projects to take full width if needed */
+        min-width: 100%;
     }
 }
 
@@ -235,7 +386,29 @@
 }
 
 
-@media (max-width: 500px) {
+/* --- CONVERT TO MENU ICON: 550px and down --- */
+@media (max-width: 550px) {
+    /* Navbar Links to Menu Icon Logic */
+    .navbar .logo {
+        font-size: 1.3em;
+    }
+    
+    .nav-links {
+        display: none; /* Hide navigation links */
+    }
+    
+    .menu-toggle {
+        display: block; /* Show the hamburger icon */
+    }
+    .navbar {
+        flex-direction: row; 
+        justify-content: space-between;
+    }
+}
+/* ---------------------------------------------- */
+
+
+@media (max-width: 510px) {
     .navbar .logo {
         font-size: 1.2em;
     }
@@ -257,21 +430,6 @@
 
 @media (max-width: 400px) {
     
-   
-    .navbar {
-       
-        flex-direction: row; 
-        justify-content: space-between;
-    }
-    
-    .nav-links {
-        display: none; 
-    }
-    
-    .menu-toggle {
-        display: block;
-    }
-  
     .navbar ul li {
         margin: 0 5px;
     }
@@ -284,6 +442,22 @@
     }
     .grid-container h1 {
         font-size: 1.6em;
+    }
+    
+    .portfolio-section {
+        padding: 40px 15px;
+    }
+
+    .portfolio-section h2 {
+        font-size: 1.8em;
+    }
+    
+    .project-item h3 {
+        font-size: 1.3em;
+    }
+    
+    .section-content p, .section-content ul {
+        font-size: 0.9em;
     }
 }
 

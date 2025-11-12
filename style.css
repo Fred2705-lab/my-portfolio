@@ -23,7 +23,6 @@ body {
 }
   .grid-container>div {
             font-size: 40px;
-            /* outline: 3px solid rgb(10, 28, 226); */
         }
 
 .grid-container {
@@ -99,34 +98,37 @@ body {
 }
 
 
+/* NOTE: Updated .grid-container-main to .content-section for unified handling */
+.content-section {
+    max-width: 1400px; 
+    margin: 0 auto; 
+    position: relative;
+    z-index: 5;
+}
 
-.grid-container-main {
+/* Home section container styling */
+#home {
     display: flex;
     align-items: center;
     justify-content: flex-start; 
     min-height: calc(100vh - 80px); 
     padding: 0 50px;
-    position: relative;
-    z-index: 5;
-    
-    max-width: 1400px; 
-    margin: 0 auto; 
-    
 }
 
-.profile-card {
+/* Home section-specific positioning for the profile card */
+#home .profile-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: absolute; 
     left: 100px; 
-    top: 50px; 
+    top: 200px; 
     z-index: 6; 
 }
 
 .profile-image-container {
-    width: 300px; 
-    height: 300px; 
+    width: 400px; 
+    height: 400px; /* FIXED: Corrected '400x' to '400px' */ 
     border-radius: 50%;
     overflow: hidden;
     border: 5px solid rgba(255, 255, 255, 0.2); 
@@ -162,7 +164,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* 🛠️ Adjusted font size for icons */
     font-size: 1.2em; 
     font-weight: bold;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -176,7 +177,8 @@ body {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-.grid-container {
+/* Home Section grid-container positioning */
+#home .grid-container {
     margin-left: 500px; 
     text-align: left;
     max-width: 600px;
@@ -220,5 +222,195 @@ body {
     font-family: var(--display-font);
 }
 
+/* --- ADDED FOR MENU TOGGLE FUNCTIONALITY (Mobile View) --- */
+@media (max-width: 550px) {
+    /* Style for when the menu is active/open */
+    .nav-links.active {
+        display: flex; /* Make it visible */
+        position: absolute;
+        top: 80%; /* Position it right below the navbar */
+        right: 0; /* Align to the right */
+        left: auto; /* Remove left: 0 */
+        width: 200px; /* Give it a fixed width for the 'dropdown' */
+        max-width: 80%; /* Ensure it doesn't overflow on tiny screens */
+        flex-direction: column;
+        text-align: right;
+        padding: 10px 20px; /* Add padding for space from the edges */
+        border-radius: 5px; /* Optional: rounded corners */
+        
+    }
+
+    .nav-links.active ul {
+        flex-direction: column;
+        /* Remove default list margin/padding if any */
+        padding: 0; 
+    }
+
+    .nav-links.active ul li {
+        margin: 10px 0; /* Add vertical spacing, remove horizontal margin */
+    }
+}
+        
+    
+
+    .nav-links.active ul {
+        flex-direction: column;
+    }
+
+    .nav-links.active ul li {
+        margin: 10px 0; /* Add vertical spacing */
+    }
 
 
+
+/* --- NEW STYLES FOR PORTFOLIO SECTIONS (About, Works, Contact) --- */
+/* --- General Section Styling --- */
+.portfolio-section {
+    padding: 80px 50px;
+    background: rgba(0, 0, 0, 0.7); 
+    color: var(--text-color);
+    min-height: 80vh; 
+    
+    /* HIDE SECONDARY SECTIONS BY DEFAULT */
+    display: none; 
+}
+
+/* SHOW ONLY THE ACTIVE SECTION */
+.content-section.active {
+    display: block; 
+}
+#home.content-section.active {
+    display: flex;
+}
+.portfolio-section.active {
+    display: block; /* For #about, #works, #contact */
+}
+
+
+.portfolio-section h2 {
+    font-size: 3em;
+    font-family: var(--display-font);
+    text-align: center;
+    margin-bottom: 40px;
+    color: aqua;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+
+/* New style for the two-column layout on About, Works, Contact */
+.two-column-layout {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 50px;
+    align-items: flex-start; /* Align content to the top */
+}
+
+/* Styling for the profile card when used in the two-column layout */
+.portfolio-section .profile-card {
+    /* Reset home-specific absolute positioning */
+    position: relative; 
+    left: auto; 
+    top: auto; 
+    
+    /* Ensure it takes a fixed width in the grid */
+    flex-shrink: 0;
+    width: 350px; /* Adjust size for a balanced side-by-side look */
+    
+    /* Ensure all inner elements are centered */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 50px; /* Space from the top of the section */
+}
+
+.portfolio-section .profile-image-container {
+    width: 250px; /* Smaller size for side-by-side */
+    height: 250px;
+}
+
+
+.section-content {
+    /* Allow the content to take up the rest of the space */
+    flex-grow: 1;
+    line-height: 1.6;
+    padding-top: 50px; /* Match the profile card padding for vertical alignment */
+}
+
+
+/* --- Works/Projects Styling --- */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.project-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #07e62c;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+}
+
+.project-item h3 {
+    color: aqua;
+    font-family: var(--main-font);
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+.project-item a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #07e62c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* --- Contact Form Styling --- */
+.contact-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--text-color);
+    font-family: var(--main-font);
+}
+
+.contact-form button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #07e62c;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button[type="submit"]:hover {
+    background-color: aqua;
+}

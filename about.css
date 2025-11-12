@@ -1,0 +1,46 @@
+/*
+ * about.css: Styles unique to the About Page (about.html)
+ */
+
+.portfolio-section {
+    padding: 80px 50px;
+    background: rgba(0, 0, 0, 0.7); 
+    color: var(--text-color);
+    min-height: 80vh; 
+    display: block; 
+}
+
+/* Two-column layout (Shared across About, Works, Contact) */
+.two-column-layout {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 50px;
+    align-items: flex-start;
+    
+}
+
+/* Profile card in two-column layout */
+.portfolio-section .profile-card {
+    position: relative; 
+    left: auto; 
+    top: auto; 
+    flex-shrink: 0;
+    width: 350px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 30px; 
+}
+
+.portfolio-section .profile-image-container {
+    width: 250px; 
+    height: 250px;
+}
+
+.section-content {
+    flex-grow: 1;
+    line-height: 1.6;
+    padding-top: 0px;
+}

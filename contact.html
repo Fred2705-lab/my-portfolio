@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Contact</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
+    
+    <link rel="stylesheet" href="contact.css"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@400;700&family=Faster+One&family=Orelega+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">MY PORTFOLIO</div>
+        <nav class="nav-links" id="navLinks"> 
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="works.html">Works</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="menuToggle"> 
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <main id="contact" class="content-main portfolio-section">
+        <div class="two-column-layout">
+            <div class="profile-card">
+                <div class="profile-image-container">
+                    <img src="mypic.jpg" alt="Fred Anthony Yanoc" class="profile-image">
+                </div>
+                <div class="contact-info">
+                    <p>@fyanoc3.com</p>
+                    <div class="social-icons">
+                        <div class="icon-placeholder"><i class="fab fa-behance"></i></div>
+                        <div class="icon-placeholder"><i class="fab fa-linkedin-in"></i></div>
+                        <div class="icon-placeholder"><i class="fab fa-instagram"></i></div>
+                        <div class="icon-placeholder"><i class="fab fa-twitter"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-content">
+                <h2>Get in Touch</h2>
+                <p>
+                    I am always open to discussing new projects, creative ideas, or opportunities 
+                    to be part of your visions. Feel free to send me a message!
+                </p>
+                <p>
+                    Email: <a href="mailto:fyanoc3@gmail.com">fyanoc3@gmail.com</a><br>
+                    Phone: +639924203018<br>
+                    Location: Manjuyod, Negros Oriental
+                </p>
+                
+                <form class="contact-form">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('navLinks');
+        
+        if (menuToggle && nav) {
+            menuToggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+        }
+    });
+    </script>
+</body>
+</html>

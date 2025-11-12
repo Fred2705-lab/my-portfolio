@@ -1,0 +1,73 @@
+/*
+ * works.css: Styles unique to the Works Page (works.html)
+ */
+
+.portfolio-section {
+    padding: 80px 50px;
+    background: rgba(0, 0, 0, 0.7); 
+    color: var(--text-color);
+    min-height: 80vh; 
+    display: block;
+}
+
+/* Two-column layout */
+.two-column-layout {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 50px;
+    align-items: flex-start;
+}
+.portfolio-section .profile-card {
+    position: relative; 
+    left: auto; 
+    top: auto; 
+    flex-shrink: 0;
+    width: 350px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 50px; 
+}
+.portfolio-section .profile-image-container {
+    width: 250px; 
+    height: 250px;
+}
+.section-content {
+    flex-grow: 1;
+    line-height: 1.6;
+    padding-top: 0px;
+}
+
+/* Works/Projects Styling */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+.project-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid var(--primary-green);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+.project-item:hover {
+    transform: translateY(-5px);
+}
+.project-item h3 {
+    color: var(--secondary-aqua);
+    font-family: var(--main-font);
+    font-size: 1.5em;
+    margin-top: 0;
+}
+.project-item a {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--primary-green);
+    text-decoration: none;
+    font-weight: bold;
+}

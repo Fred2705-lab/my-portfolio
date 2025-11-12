@@ -1,0 +1,60 @@
+/*
+ * home.css: Styles unique to the Home Page (index.html)
+ */
+
+#home.content-main {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    min-height: calc(100vh - 80px); 
+    padding: 0 50px;
+}
+
+/* Home section-specific profile card size and absolute positioning */
+#home .profile-card {
+    position: absolute; 
+    left: 100px; 
+    top: 50px; 
+    z-index: 6; 
+}
+#home .profile-image-container {
+    width: 400px; 
+    height: 400px;
+}
+
+/* Home Section grid-container positioning */
+#home .grid-container {
+    margin-left: 500px; 
+    text-align: left;
+    max-width: 600px;
+    position: relative;
+    z-index: 7;  
+    
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 10px; 
+}
+
+/* Home Typography */
+.grid-container h1 {
+    font-size: 4.5em; 
+    margin-bottom: 10px;
+    line-height: 1.1;
+    font-weight: 400;
+    font-family: var(--display-font);
+}
+.grid-container .subtitle {
+    font-size: 2.8em;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: 10;
+    color: var(--primary-green);
+    font-family: var(--display-font);
+}
+.grid-container .course {
+    font-size: 2.0em; 
+    margin-top: 0;
+    font-weight: 10;
+    color: var(--secondary-aqua); 
+    font-family: var(--display-font);
+}

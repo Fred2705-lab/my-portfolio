@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@400;700&family=Faster+One&family=Orelega+One&display=swap" rel="stylesheet">
+    </head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">MY PORTFOLIO</div>
+        <nav class="nav-links" id="navLinks"> 
+            <ul>
+                <li><a href="#home">Home</a></li> <li><a href="#about">About</a></li> <li><a href="#works">Works</a></li> <li><a href="#contact">Contact</a></li> </ul>
+        </nav>
+        <div class="menu-toggle" id="menuToggle"> 
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <section id="home" class="content-section active"> 
+        <div class="profile-card">
+            <div class="profile-image-container">
+                <img src="mypic.jpg" alt="Fred Anthony Yanoc" class="profile-image">
+            </div>
+            <div class="contact-info">
+                <p>@fyanoc3.com</p>
+                <div class="social-icons">
+                    <div class="icon-placeholder"><i class="fab fa-behance"></i></div>
+                    <div class="icon-placeholder"><i class="fab fa-linkedin-in"></i></div>
+                    <div class="icon-placeholder"><i class="fab fa-instagram"></i></div>
+                    <div class="icon-placeholder"><i class="fab fa-twitter"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <h1>Hello, I'm Fred Anthony Yanoc</h1>
+            <p class="subtitle">Bs-Information Technology</p>
+            <p class="course">ITS 300-C</p>
+            <p style="margin-top: 20px; font-size: 1.2em; font-weight: 500; color: #fff;">
+                I am a passionate IT student with a focus on web development 
+                and data analysis. Let's connect and build something amazing!
+            </p>
+        </div>
+    </section>
+    
+    <section id="about" class="content-section portfolio-section">
+        <div class="section-content">
+            <h2>About Me</h2>
+            <p>
+                I am a highly motivated IT student in the final year of my Bachelor of Science in Information Technology degree. 
+                My core strengths lie in front-end web development (HTML, CSS, JavaScript) and utilizing Python for scripting and data tasks.
+                I am actively seeking opportunities to apply my technical knowledge in a professional setting and contribute to innovative projects.
+            </p>
+            
+            <h3>Skills & Expertise</h3>
+            <ul>
+                <li>**Languages:** HTML5, CSS3, JavaScript, Python, SQL</li>
+                <li>**Frameworks/Libraries:** React, Node.js, Bootstrap</li>
+                <li>**Tools:** Git, VS Code, Figma</li>
+            </ul>
+            
+            <h3>Education</h3>
+            <p>
+                **Bachelor of Science in Information Technology (BSIT)**<br>
+                [NORSU BAIS CITY] | Expected Graduation: [2027]
+            </p>
+        </div>
+    </section>
+    
+    <section id="works" class="content-section portfolio-section">
+        <div class="section-content">
+            <h2>My Projects</h2>
+            <div class="project-gallery">
+                
+                <div class="project-item">
+                    <h3>E-commerce Mockup Website</h3>
+                    <p>
+                        A fully responsive front-end design using HTML, CSS, and basic JavaScript. 
+                        Focus was placed on clean design and mobile compatibility.
+                    </p>
+                    <a href="[Link to Project 1]" target="_blank">View Project</a>
+                </div>
+                
+                <div class="project-item">
+                    <h3>Python Data Analysis Tool</h3>
+                    <p>
+                        A Python script utilizing Pandas to clean and visualize large datasets, 
+                        creating interactive charts using Matplotlib.
+                    </p>
+                    <a href="[Link to Project 2]" target="_blank">View Project on GitHub</a>
+                </div>
+                
+                <div class="project-item">
+                    <h3>Personal Blog Site</h3>
+                    <p>
+                        Built with a simple HTML/CSS template. 
+                        Features include a custom dark mode toggle and dynamic routing.
+                    </p>
+                    <a href="[Link to Project 3]" target="_blank">View Live Site</a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="content-section portfolio-section">
+        <div class="section-content">
+            <h2>Get in Touch</h2>
+            <p>
+                I am always open to discussing new projects, creative ideas, or opportunities 
+                to be part of your visions. Feel free to send me a message!
+            </p>
+            <p>
+                Email:<a href=></a> fyanoc3@gmail.com</a><br>
+                Phone: +639924203018<br>
+                Location: Manjuyod, Negros Oriental
+            </p>
+            
+            <form class="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Mobile Menu Toggle Script (Existing Functionality) ---
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('navLinks');
+        
+        if (menuToggle && nav) {
+            menuToggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+        }
+
+        // --- SPA Section Toggling Script (The new functionality) ---
+        const navLinks = document.querySelectorAll('.navbar ul li a');
+        const sections = document.querySelectorAll('.content-section');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Prevent the default browser jump to the anchor
+                e.preventDefault(); 
+                
+                // Get the ID of the target section (e.g., "#about" from href="#about")
+                const targetId = link.getAttribute('href'); 
+                
+                // 1. Hide all sections by removing the 'active' class
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // 2. Show the target section by adding the 'active' class
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+                
+                // Optional: Scroll to the top of the content area for a smoother feel
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+
+                // Optional: Close mobile menu after clicking a link
+                if (nav && nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
