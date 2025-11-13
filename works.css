@@ -3,55 +3,93 @@
  */
 
 .portfolio-section {
-    padding: 80px 50px;
+    /* Base padding for most screens: Reduced horizontal padding for mobile safety */
+    padding: 40px 20px; 
     background: rgba(0, 0, 0, 0.7); 
     color: var(--text-color);
     min-height: 80vh; 
     display: block;
+    overflow-x: hidden; /* FIX: Prevents horizontal scrollbar/overflow from masking content */
+    padding-top: 0%;
+
 }
 
-/* Two-column layout */
+/* ------------------------------------------------ */
+/* Two-column layout (Default for small screens is a single column) */
+/* ------------------------------------------------ */
 .two-column-layout {
     display: flex;
+    flex-direction: column; /* Mobile/Small screen default */
     max-width: 1200px;
     margin: 0 auto;
-    gap: 50px;
-    align-items: flex-start;
+    gap: 40px; 
+    align-items: center;
+     
 }
-.portfolio-section .profile-card {
-    position: relative; 
-    left: auto; 
-    top: auto; 
-    flex-shrink: 0;
-    width: 350px; 
+
+/* Profile Card Styling - No absolute positioning by default */
+.profile-card {
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 6; 
+    /* Ensures the profile card spans the full width of its container, allowing align-items: center to work correctly across the screen. */
+    width: 100%; 
+    flex-shrink: 0; /* FIX: Prevent shrinking on very small screens, ensuring image displays */
+}
+.profile-card .contact-info {
     text-align: center;
-    padding-top: 50px; 
+    margin-top: 20px;
 }
-.portfolio-section .profile-image-container {
-    width: 250px; 
-    height: 250px;
+.profile-card .social-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
 }
-.section-content {
-    flex-grow: 1;
-    line-height: 1.6;
-    padding-top: 0px;
+.profile-card .contact-info p {
+    /* Ensures long text (like an email) breaks onto a new line if needed */
+    word-break: break-word;
 }
 
+
+.profile-image-container {
+    width: 200px; /* Reduced base size to 200px (from 250px) for better small screen fit */
+    height: 200px; 
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid rgba(255, 255, 255, 0.2); 
+    /* Base shadow: 20px blur */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
+}
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+
 /* Works/Projects Styling */
+.section-content {
+    width: 100%;
+    /* CRITICAL FIX for Flexbox/Grid interaction in the problematic range (665px-767px) */
+    min-width: 0; 
+    padding-top: 0%;
+}
 .project-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* This ensures a single column when the screen is too narrow for two 280px cards */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-top: 30px;
+    min-width: 0; /* FIX: Ensures the grid container doesn't prevent its parent from shrinking */
 }
 .project-item {
     background: rgba(255, 255, 255, 0.05);
-    padding: 20px;
+    padding: 20px; 
     border-radius: 8px;
     border-left: 5px solid var(--primary-green);
+    /* Base shadow: 4px offset, 10px blur */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease;
 }
@@ -70,4 +108,114 @@
     color: var(--primary-green);
     text-decoration: none;
     font-weight: bold;
+}
+
+/* ------------------------------------------------ */
+/* Media Query for ULTRA-Small Screens (Phones: 300px and below) */
+/* This handles the absolute smallest screens */
+/* ------------------------------------------------ */
+@media (max-width: 300px) {
+    .portfolio-section {
+        /* Even less padding for tiny screens */
+        padding: 20px 10px; 
+    }
+    
+    .section-content h2 {
+        font-size: 1.5rem; 
+    }
+
+    /* Smallest image size */
+    .profile-image-container {
+        width: 150px; 
+        height: 150px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    }
+
+    /* Reduced font sizes */
+    .profile-card p {
+        font-size: 0.8rem;
+    }
+    .project-item {
+        padding: 10px; 
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); 
+        min-width: unset;
+    }
+    .project-item h3 {
+        font-size: 1.2em; 
+    }
+    .project-item p, .project-item a {
+        font-size: 0.9em;
+    }
+
+    /* Reduced gaps */
+    .two-column-layout {
+        gap: 15px;
+    }
+    .project-gallery {
+        gap: 15px;
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ------------------------------------------------ */
+/* Media Query for Intermediate Screens (600px up to 767px) */
+/* This explicitly handles the display issue range (666px is in this range) */
+/* ------------------------------------------------ */
+@media (min-width: 600px) and (max-width: 767px) {
+    .two-column-layout {
+        flex-direction: column; /* Ensure it stays in a column layout */
+    }
+    .section-content {
+        flex-basis: 100%; /* Force it to take up the space */
+        width: 100%;
+    }
+}
+
+
+/* ------------------------------------------------ */
+/* Media Query for Larger Screens (Desktops: 1001px and up) */
+/* **FIXED**: The two-column layout is now safely activated above 1000px. */
+/* ------------------------------------------------ */
+@media (min-width: 1001px) { /* CHANGED from 768px to 1001px */
+    .portfolio-section {
+        /* Restore original, larger padding */
+        padding: 100px 50px; 
+    }
+    
+    /* Re-establish two-column layout */
+    .two-column-layout {
+        flex-direction: row; 
+        gap: 50px;
+        align-items: flex-start; 
+    }
+    
+    /* Give the profile card a defined width and override the 100% width from base style */
+    .profile-card {
+        flex-shrink: 0; 
+        width: 300px; 
+        /* Ensure it remains in the normal document flow */
+        position: static; 
+    }
+
+    /* Explicitly ensure the project content area expands to use all available space */
+    .section-content {
+        flex-grow: 1;
+        width: auto; /* Reset width to auto for flex growth */
+        min-width: 0;
+    }
+
+    /* Restore larger image size */
+    .profile-image-container {
+        width: 280px; 
+        height: 280px;
+    }
+    
+    /* Absolute positioning for the #home section (ONLY if works.css is used there) 
+       This is kept separate to avoid conflicts on the works.html page */
+    #home .profile-card {
+        position: absolute; 
+        left: 100px; 
+        top: 200px;  
+        z-index: 6; 
+    }
 }

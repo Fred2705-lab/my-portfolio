@@ -157,6 +157,12 @@
         max-width: 800px;
         margin: 0 auto;
     }
+    
+    /* NEW: Ensure sections don't create horizontal scrollbar */
+    .content-section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 
 
@@ -293,7 +299,17 @@
 }
 /* ------------------------------------------- */
 
+/* --- MAIN MOBILE STYLES: max-width 768px --- */
 @media (max-width: 768px) {
+    /* **NEW:** Added a minimum margin for the profile card name/details */
+    .profile-card h3 {
+        margin-top: 10px; 
+        font-size: 1.5em; /* Adjusted for better readability */
+    }
+    .profile-card p {
+        font-size: 1.0em;
+    }
+
     .profile-image-container {
         width: 200px;
         height: 200px;
@@ -355,6 +371,19 @@
     .project-item {
         /* On smaller screens, allow projects to take full width if needed */
         min-width: 100%;
+        margin-bottom: 30px; /* **NEW:** Add bottom margin for separation */
+    }
+    
+    /* **NEW:** Ensure images don't overflow the container */
+    .project-item img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* **NEW:** Adjust the project grid to stack if it's a grid */
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
 }
 
@@ -369,6 +398,10 @@
     }
     .grid-container .subtitle {
         font-size: 1.3em;
+    }
+    /* **NEW:** Further reduce section padding */
+    .portfolio-section {
+        padding: 40px 15px;
     }
 }
 
@@ -399,10 +432,17 @@
     
     .menu-toggle {
         display: block; /* Show the hamburger icon */
+        /* **NEW:** Add padding to make the touch target larger */
+        padding: 5px; 
     }
     .navbar {
         flex-direction: row; 
         justify-content: space-between;
+    }
+    
+    /* **NEW:** Reset home padding for a slightly better fit */
+    #home {
+        padding: 15px 10px;
     }
 }
 /* ---------------------------------------------- */
@@ -428,7 +468,15 @@
 }
 
 
+/* --- EXTREME MOBILE STYLES: max-width 400px --- */
 @media (max-width: 400px) {
+    /* **NEW:** For very small screens, make sure the profile card elements are legible */
+    .profile-card h3 {
+        font-size: 1.4em; 
+    }
+    .profile-card p {
+        font-size: 0.9em;
+    }
     
     .navbar ul li {
         margin: 0 5px;
@@ -477,5 +525,16 @@
     }
     .grid-container .subtitle {
         font-size: 1.0em;
+    }
+    
+    /* **NEW:** Final safety reduction for extremely small phones */
+    .portfolio-section {
+        padding: 30px 10px;
+    }
+    .portfolio-section h2 {
+        font-size: 1.6em;
+    }
+    .project-item h3 {
+        font-size: 1.2em;
     }
 }

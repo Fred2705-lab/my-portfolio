@@ -3,54 +3,80 @@
  */
 
 .portfolio-section {
-    padding: 80px 50px;
+    /* Base padding, reduced for mobile safety */
+    padding: 40px 90px; 
     background: rgba(0, 0, 0, 0.7); 
     color: var(--text-color);
     min-height: 80vh; 
     display: block;
 }
 
-/* Two-column layout */
+/* ------------------------------------------------ */
+/* Mobile-First Layout (Default: Single Column & Centered) */
+/* ------------------------------------------------ */
 .two-column-layout {
     display: flex;
+    /* Default to column for small screens */
+    flex-direction: column; 
     max-width: 1200px;
-    margin: 0 auto;
-    gap: 50px;
-    align-items: flex-start;
+    margin: 0 auto; /* Centers the whole container */
+    /* Reduced gap for mobile */
+    gap: 30px; 
+    align-items: center; /* Centers children (.profile-card, .section-content) horizontally */
 }
+
+/* Profile Card Styling */
 .portfolio-section .profile-card {
     position: relative; 
     left: auto; 
     top: auto; 
+    /* Allow it to take full width of the centered container */
+    width: 100%; 
     flex-shrink: 0;
-    width: 350px; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    padding-top: 50px; 
+    /* ENSURE ALL TEXT IS CENTERED */
+    text-align: center; 
+    /* Reduced padding for mobile */
+    padding-top: 20px; 
 }
 .portfolio-section .profile-image-container {
-    width: 250px; 
-    height: 250px;
+    /* Reduced size for mobile screens */
+    width: 200px; 
+    height: 200px;
 }
 .section-content {
+    /* The main content takes full width in mobile layout */
+    width: 100%; 
     flex-grow: 1;
     line-height: 1.6;
     padding-top: 0px;
+    min-width: 0; 
+    /* ENSURE ALL TEXT IS CENTERED */
+    text-align: center; 
 }
 
 /* Contact Form Styling */
+.contact-form {
+    /* FIX: Sets a max width for the form container (the "box") */
+    max-width: 400px;
+    /* FIX: Centers the form box horizontally within its parent container */
+    margin: 0 auto; 
+}
 .contact-form label {
     display: block;
     margin-top: 15px;
     margin-bottom: 5px;
     font-weight: bold;
+    /* OVERRIDE: Align label text left for readability */
+    text-align: left;
 }
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
-    width: 100%;
+    /* Width set to 100% of the new 400px max-width container */
+    width: 100%; 
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -58,9 +84,12 @@
     background-color: rgba(0, 0, 0, 0.5);
     color: var(--text-color);
     font-family: var(--main-font);
+    /* OVERRIDE: Align input text left for readability */
+    text-align: left;
 }
 .contact-form button[type="submit"] {
     display: block;
+    /* Width set to 100% of the new 400px max-width container */
     width: 100%;
     padding: 12px;
     background-color: var(--primary-green);
@@ -75,4 +104,48 @@
 }
 .contact-form button[type="submit"]:hover {
     background-color: var(--secondary-aqua);
+}
+
+/* ------------------------------------------------ */
+/* Media Query for Tablets and Desktops (768px and up) */
+/* Re-establish the two-column layout */
+/* ------------------------------------------------ */
+@media (min-width: 768px) {
+    .portfolio-section {
+        /* Restore larger padding for desktops */
+        padding: 80px 50px;
+    }
+    
+    .two-column-layout {
+        /* Switch back to row layout */
+        flex-direction: row; 
+        gap: 50px;
+        align-items: flex-start;
+    }
+
+    .portfolio-section .profile-card {
+        /* Define the fixed width for the left column */
+        width: 350px; 
+        padding-top: 50px;
+        /* Profile card content remains centered */
+        text-align: center;
+    }
+    
+    .portfolio-section .profile-image-container {
+        /* Restore larger image size */
+        width: 250px; 
+        height: 250px;
+    }
+    
+    .section-content {
+        /* Ensure the right column grows to fill the remaining space */
+        width: auto; 
+        /* RESET: Revert text alignment to left for standard long-form content on desktop */
+        text-align: left;
+    }
+    
+    /* Ensure the form remains centered in the right column */
+    .contact-form {
+        margin: 0 auto; 
+    }
 }
